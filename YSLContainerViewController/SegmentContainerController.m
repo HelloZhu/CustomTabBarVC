@@ -110,11 +110,15 @@ static const CGFloat kYSLScrollMenuViewHeight = 40;
 - (void)addToScrollView:(NSInteger)index
 {
     id obj = [self.childControllers_Temp objectAtIndex:index];
-    BOOL isContain = [_contentScrollView.subviews containsObject: obj];
-    
-    if (!isContain)
-    {
-        if ([obj isKindOfClass:[UIViewController class]]) {
+    if ([obj isKindOfClass:[UIViewController class]]) {
+        
+        UIViewController *controller = (UIViewController*)obj;
+        
+        BOOL isContain = [_contentScrollView.subviews containsObject: controller.view];
+        
+        if (!isContain)
+        {
+            
             
             UIViewController *controller = (UIViewController*)obj;
             CGFloat scrollWidth = _contentScrollView.frame.size.width;
@@ -126,7 +130,6 @@ static const CGFloat kYSLScrollMenuViewHeight = 40;
             [_childControllers replaceObjectAtIndex:index withObject:obj];
         }
     }
-    
     
 }
 #pragma mark -- private
