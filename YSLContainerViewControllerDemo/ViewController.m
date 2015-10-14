@@ -47,10 +47,10 @@
     // ContainerView
     float statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     float navigationHeight = self.navigationController.navigationBar.frame.size.height;
+    CGFloat topHeight = statusHeight + navigationHeight;
     
     SegmentContainerController *containerVC = [[SegmentContainerController alloc]initWithControllers:@[playListVC,artistVC]
-                                                                                        topBarHeight:statusHeight + navigationHeight
-                                                                                parentViewController:self];
+                                               currentIndex:1 topBarHeight:topHeight parentViewController:self];
     containerVC.delegate = self;
     containerVC.menuItemFont = [UIFont fontWithName:@"Futura-Medium" size:16];
     

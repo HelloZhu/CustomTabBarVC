@@ -23,7 +23,11 @@
 @property (nonatomic, strong) UIColor *menuIndicatorColor;
 
 - (id)initWithControllers:(NSArray *)controllers
+             currentIndex:(NSInteger)currentindex
              topBarHeight:(CGFloat)topBarHeight
      parentViewController:(UIViewController *)parentViewController;
+
+
+- (void)selectedAtIndex:(NSInteger)index;
 
 @end

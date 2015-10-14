@@ -108,7 +108,26 @@ static const CGFloat kYSLIndicatorHeight = 3;
     }
 }
 
+
+
 #pragma mark -- public
+
+- (void)setIndicatorX:(CGFloat)left
+{
+    _indicatorView.frame = CGRectMake(left, _indicatorView.frame.origin.y, _indicatorView.frame.size.width, _indicatorView.frame.size.height);
+}
+
+- (void)selectAtIndex:(NSInteger)index
+{
+    if ((self.itemViewArray.count-1) < index) {return;}
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(scrollMenuViewSelectedIndex:)]) {
+        [self.delegate scrollMenuViewSelectedIndex: index];
+    }
+    
+    NSInteger x = [self itemWidth]*index;
+    [self setIndicatorX: x];
+}
 
 - (void)setIndicatorViewFrameWithRatio:(CGFloat)ratio isNextItem:(BOOL)isNextItem toIndex:(NSInteger)toIndex
 {
